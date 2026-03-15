@@ -40,6 +40,7 @@ Rules:
 - Default timezone is Asia/Kolkata (IST)
 - For "in X minutes/hours" use a one-time reminder (frequency: once)
 - Keep reply messages friendly, concise, under 100 words
+- IMPORTANT: Reply in the same language the user used. If they wrote in Hindi, reply in Hindi. If Hinglish, reply in Hinglish. If English, reply in English. Match their language exactly.
 - reply should confirm what was set e.g. "Got it! I'll remind you every day at 8am to drink water 💧"
 - For unknown messages be helpful and show examples`
       }
@@ -60,6 +61,7 @@ async function generateReminderMessage(originalMessage) {
         content: `Generate a short, friendly, motivational WhatsApp reminder message for: "${originalMessage}". 
         
 Keep it under 50 words. Be warm and encouraging. Add a relevant emoji. 
+Reply in the same language as the reminder message — if it's Hindi or Hinglish, respond in Hinglish.
 Never start with "Reminder:" — make it feel personal and human.
 Return only the message text, nothing else.`
       }

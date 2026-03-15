@@ -75,7 +75,7 @@ router.post("/whatsapp", async (req, res) => {
 
 // Razorpay payment confirmation webhook
 router.post("/razorpay", async (req, res) => {
-  res.sendStatus(200);
+  res.status(200).end();
 
   try {
     const event = req.body.event;

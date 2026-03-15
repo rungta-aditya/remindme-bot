@@ -1,13 +1,14 @@
 const Razorpay = require("razorpay");
-
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
-});
+const crypto = require("crypto");
 
 async function createPaymentLink(phone) {
+  const razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET
+  });
+
   const paymentLink = await razorpay.paymentLink.create({
-    amount: 9900, // ₹99 in paise
+    amount: 9900,
     currency: "INR",
     description: "RemindMe Pro — unlimited reminders",
     notify: { sms: false, email: false },
@@ -21,7 +22,6 @@ async function createPaymentLink(phone) {
 }
 
 async function verifyWebhook(body, signature) {
-  const crypto = require("crypto");
   const secret = process.env.RAZORPAY_KEY_SECRET;
   const expected = crypto
     .createHmac("sha256", secret)
